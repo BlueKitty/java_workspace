@@ -1,0 +1,23 @@
+package util;
+
+import java.io.*;
+
+import Car_Config.Automotive;
+
+public class SaveRestore {
+	
+	//Serialization
+	public void serializeAuto(Automotive auto,String filename){
+		try{
+			ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(filename));
+			os.writeObject(auto);
+			os.close();
+		}catch(IOException ex) {
+			ex.printStackTrace();			
+		}
+		auto = null;
+	}
+	//Deserialization
+	
+
+}

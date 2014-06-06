@@ -1,0 +1,26 @@
+package lab2;
+
+import java.lang.reflect.Array;
+
+public class Statistics {
+	int [] lowscores = new int [5];
+	int [] highscores = new int [5];
+	float [] avgscores = new float [5];
+	
+	void findlow(Student [] a) {
+		// This method will find lowest score and store it in an array names lowscores
+		int lengh_array = Array.getLength(a);
+		System.out.print(lengh_array);
+	}
+	
+	void findhigh(Student [] a) {
+		//This method will find highest score and store it in an array names highscores
+	}
+	
+	void findavg(Student [] a) {
+		//This method will find avg score for each quiz and store it in an array names avgscores
+	}
+	
+	//Add methods to print values of instance variables
+
+}

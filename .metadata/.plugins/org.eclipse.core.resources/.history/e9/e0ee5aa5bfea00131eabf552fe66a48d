@@ -1,0 +1,90 @@
+package Car_Config;
+
+public class OptionSet {
+	private Option opt[];
+	private String name;
+
+//------constructors------
+	//default constructor
+	public OptionSet() {
+		opt = null;
+		name = null;
+	}
+	//constructor with name
+	public OptionSet(String n) {
+		opt = null;
+		name =n;
+	}
+    //constructor with OptionSet name and size
+	public OptionSet(String n, int size){
+		opt = new Option[size];
+		name =n;
+		for(int i = 0; i < opt.length; i++) {
+			opt[i] = new Option();
+		}
+	}
+//------Getters-------
+	//getName
+	protected String getName() {
+		return name;
+	}
+	//getOption with index
+	protected Option getOptionI(int i){
+		return opt[i];
+	}
+	//find Option with name
+	protected Option findOptionN(String n){
+		for(int i=0; i< opt.length; i++){
+			if(opt[i].getName() == n){
+				return opt[i];
+			}
+		}
+		return null;
+	}
+//------Setters------
+	//setName
+	protected void setName(String n){
+		name = n;
+	}
+	//setOption with index
+	protected void setOptionI(int i, Option opt_i){
+		opt[i] = opt_i;
+	}
+	
+//------Class Option------	
+	public class Option {
+		private String name;
+		private float price;
+//------constructors------
+		//default constructor
+		public Option() {
+			name = null;
+			price = 0;
+		}
+		//constructor with name
+		public Option(String name) {
+			this.name = name;
+			price = 0;
+		}
+		//constructor with name and price
+		public Option(String name, float price) {
+			this.name = name;
+			this.price = price;
+		}
+//------Setters------
+		protected void setName(String name ){
+			this.name = name;			
+		}
+		protected void setPrice(float price){
+			this.price = price;
+		}
+//------Getters------
+		protected String getName() {
+			return name;
+		}
+		protected float getPrice() {
+			return price;
+		}
+	}
+
+}

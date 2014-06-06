@@ -1,0 +1,1853 @@
+!SESSION 2014-04-27 21:39:40.210 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.standard.product -keyring /Users/xiaolanzhou/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.standard.product -keyring /Users/xiaolanzhou/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-04-27 21:40:43.865
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2014-04-28 21:49:48.220 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.standard.product -keyring /Users/xiaolanzhou/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.standard.product -keyring /Users/xiaolanzhou/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-04-28 21:49:59.009
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jdt.core 4 4 2014-06-02 21:31:52.056
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package Car_Config;
+
+public class OptionSet {
+	private Option opt[];
+	private String name;
+
+//------constructors------
+	//default constructor
+	public OptionSet() {
+		opt = null;
+		name = null;
+	}
+	//constructor with name
+	public OptionSet(String n) {
+		opt = null;
+		name =n;
+	}
+    //constructor with OptionSet name and size
+	public OptionSet(String n, int size){
+		opt = new Option[size];
+		name =n;
+		for(int i = 0; i < opt.length; i++) {
+			opt[i] = new Option();
+		}
+	}
+//------Getters-------
+	//getName
+	protected String getName() {
+		return name;
+	}
+	//getOption with index
+	protected Option getOptionI(int i){
+		return opt[i];
+	}
+	//find Option with name
+	protected int findOption(String n){
+		for(int i=0; i< opt.length; i++){
+			if(opt[i].getName() == n){
+				return i;
+			}
+		}
+		return -1;
+	}
+//------Setters------
+	//setName
+	protected void setName(String n){
+		name = n;
+	}
+	//setOption with index
+	protected void setOptionI(int i, String name, float price){
+		opt[i] = new Option(name, price);
+	}
+	//add one Option to the end
+	protected void addOption(Option opt_i){
+		int i = opt.length;
+		opt[i] = opt_i;
+	}
+	//delete an Option with index
+	protected void deleteOption(String name) {
+		if(findOption(name) == -1){
+			System.out.println("Not Found");
+		}else{
+			int i =  findOption(name);
+			Option temp_opt[] = new Option[opt.length - 1];
+			System.arraycopy(opt, 0, temp_opt, 0, i);
+			System.arraycopy(opt, i+1, temp_opt, i, opt.length-i-1);
+			opt = temp_opt;
+		}
+		
+	}
+	//Update (find and set)
+	protected void updateOption( String name, )
+	
+//------Class Option------	
+	public class Option {
+		private String name;
+		private float price;
+//------constructors------
+		//default constructor
+		public Option() {
+			name = null;
+			price = 0;
+		}
+		//constructor with name
+		public Option(String name) {
+			this.name = name;
+			price = 0;
+		}
+		//constructor with name and price
+		public Option(String name, float price) {
+			this.name = name;
+			this.price = price;
+		}
+//------Setters------
+		protected void setName(String name ){
+			this.name = name;			
+		}
+		protected void setPrice(float price){
+			this.price = price;
+		}
+//------Getters------
+		protected String getName() {
+			return name;
+		}
+		protected float getPrice() {
+			return price;
+		}
+	}
+
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:246)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:203)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:258)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:521)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1082)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:170)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:89)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:788)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1247)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:126)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:108)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:89)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:151)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2014-06-02 21:31:52.063
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:246)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:203)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:258)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:521)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1082)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:170)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:89)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:788)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1247)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:126)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:108)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:89)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:151)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2014-06-02 21:31:52.064
+!MESSAGE Error in JDT Core during reconcile
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:246)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:203)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:258)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:521)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1082)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:170)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:89)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:788)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1247)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:126)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:108)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:89)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:151)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+
+!ENTRY org.eclipse.jdt.core 4 4 2014-06-02 21:31:52.072
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package Car_Config;
+
+public class OptionSet {
+	private Option opt[];
+	private String name;
+
+//------constructors------
+	//default constructor
+	public OptionSet() {
+		opt = null;
+		name = null;
+	}
+	//constructor with name
+	public OptionSet(String n) {
+		opt = null;
+		name =n;
+	}
+    //constructor with OptionSet name and size
+	public OptionSet(String n, int size){
+		opt = new Option[size];
+		name =n;
+		for(int i = 0; i < opt.length; i++) {
+			opt[i] = new Option();
+		}
+	}
+//------Getters-------
+	//getName
+	protected String getName() {
+		return name;
+	}
+	//getOption with index
+	protected Option getOptionI(int i){
+		return opt[i];
+	}
+	//find Option with name
+	protected int findOption(String n){
+		for(int i=0; i< opt.length; i++){
+			if(opt[i].getName() == n){
+				return i;
+			}
+		}
+		return -1;
+	}
+//------Setters------
+	//setName
+	protected void setName(String n){
+		name = n;
+	}
+	//setOption with index
+	protected void setOptionI(int i, String name, float price){
+		opt[i] = new Option(name, price);
+	}
+	//add one Option to the end
+	protected void addOption(Option opt_i){
+		int i = opt.length;
+		opt[i] = opt_i;
+	}
+	//delete an Option with index
+	protected void deleteOption(String name) {
+		if(findOption(name) == -1){
+			System.out.println("Not Found");
+		}else{
+			int i =  findOption(name);
+			Option temp_opt[] = new Option[opt.length - 1];
+			System.arraycopy(opt, 0, temp_opt, 0, i);
+			System.arraycopy(opt, i+1, temp_opt, i, opt.length-i-1);
+			opt = temp_opt;
+		}
+		
+	}
+	//Update (find and set)
+	protected void updateOption( String name, )
+	
+//------Class Option------	
+	public class Option {
+		private String name;
+		private float price;
+//------constructors------
+		//default constructor
+		public Option() {
+			name = null;
+			price = 0;
+		}
+		//constructor with name
+		public Option(String name) {
+			this.name = name;
+			price = 0;
+		}
+		//constructor with name and price
+		public Option(String name, float price) {
+			this.name = name;
+			this.price = price;
+		}
+//------Setters------
+		protected void setName(String name ){
+			this.name = name;			
+		}
+		protected void setPrice(float price){
+			this.price = price;
+		}
+//------Getters------
+		protected String getName() {
+			return name;
+		}
+		protected float getPrice() {
+			return price;
+		}
+	}
+
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:291)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1207)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:807)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:544)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:537)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:480)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:470)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:170)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:155)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2014-06-02 21:31:52.073
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:291)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1207)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:807)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:544)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:537)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:480)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:470)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:170)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:155)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2014-06-02 21:31:52.074
+!MESSAGE Error in JDT Core during AST creation
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:291)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1207)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:807)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:544)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:537)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:480)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:470)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:170)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:155)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.jdt.core 4 4 2014-06-02 21:32:00.586
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package Car_Config;
+
+public class OptionSet {
+	private Option opt[];
+	private String name;
+
+//------constructors------
+	//default constructor
+	public OptionSet() {
+		opt = null;
+		name = null;
+	}
+	//constructor with name
+	public OptionSet(String n) {
+		opt = null;
+		name =n;
+	}
+    //constructor with OptionSet name and size
+	public OptionSet(String n, int size){
+		opt = new Option[size];
+		name =n;
+		for(int i = 0; i < opt.length; i++) {
+			opt[i] = new Option();
+		}
+	}
+//------Getters-------
+	//getName
+	protected String getName() {
+		return name;
+	}
+	//getOption with index
+	protected Option getOptionI(int i){
+		return opt[i];
+	}
+	//find Option with name
+	protected int findOption(String n){
+		for(int i=0; i< opt.length; i++){
+			if(opt[i].getName() == n){
+				return i;
+			}
+		}
+		return -1;
+	}
+//------Setters------
+	//setName
+	protected void setName(String n){
+		name = n;
+	}
+	//setOption with index
+	protected void setOptionI(int i, String name, float price){
+		opt[i] = new Option(name, price);
+	}
+	//add one Option to the end
+	protected void addOption(Option opt_i){
+		int i = opt.length;
+		opt[i] = opt_i;
+	}
+	//delete an Option with index
+	protected void deleteOption(String name) {
+		if(findOption(name) == -1){
+			System.out.println("Not Found");
+		}else{
+			int i =  findOption(name);
+			Option temp_opt[] = new Option[opt.length - 1];
+			System.arraycopy(opt, 0, temp_opt, 0, i);
+			System.arraycopy(opt, i+1, temp_opt, i, opt.length-i-1);
+			opt = temp_opt;
+		}
+		
+	}
+	//Update (find and set)
+	protected void updateOption( String name, String new)
+	
+//------Class Option------	
+	public class Option {
+		private String name;
+		private float price;
+//------constructors------
+		//default constructor
+		public Option() {
+			name = null;
+			price = 0;
+		}
+		//constructor with name
+		public Option(String name) {
+			this.name = name;
+			price = 0;
+		}
+		//constructor with name and price
+		public Option(String name, float price) {
+			this.name = name;
+			this.price = price;
+		}
+//------Setters------
+		protected void setName(String name ){
+			this.name = name;			
+		}
+		protected void setPrice(float price){
+			this.price = price;
+		}
+//------Getters------
+		protected String getName() {
+			return name;
+		}
+		protected float getPrice() {
+			return price;
+		}
+	}
+
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:246)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:203)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:258)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:521)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1082)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:170)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:89)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:788)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1247)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:126)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:108)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:89)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:151)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2014-06-02 21:32:00.587
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:246)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:203)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:258)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:521)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1082)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:170)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:89)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:788)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1247)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:126)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:108)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:89)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:151)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2014-06-02 21:32:00.589
+!MESSAGE Error in JDT Core during reconcile
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:246)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:203)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:258)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:521)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1082)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:170)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:89)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:788)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1247)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:126)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:108)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:89)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:151)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+
+!ENTRY org.eclipse.jdt.core 4 4 2014-06-02 21:32:00.595
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package Car_Config;
+
+public class OptionSet {
+	private Option opt[];
+	private String name;
+
+//------constructors------
+	//default constructor
+	public OptionSet() {
+		opt = null;
+		name = null;
+	}
+	//constructor with name
+	public OptionSet(String n) {
+		opt = null;
+		name =n;
+	}
+    //constructor with OptionSet name and size
+	public OptionSet(String n, int size){
+		opt = new Option[size];
+		name =n;
+		for(int i = 0; i < opt.length; i++) {
+			opt[i] = new Option();
+		}
+	}
+//------Getters-------
+	//getName
+	protected String getName() {
+		return name;
+	}
+	//getOption with index
+	protected Option getOptionI(int i){
+		return opt[i];
+	}
+	//find Option with name
+	protected int findOption(String n){
+		for(int i=0; i< opt.length; i++){
+			if(opt[i].getName() == n){
+				return i;
+			}
+		}
+		return -1;
+	}
+//------Setters------
+	//setName
+	protected void setName(String n){
+		name = n;
+	}
+	//setOption with index
+	protected void setOptionI(int i, String name, float price){
+		opt[i] = new Option(name, price);
+	}
+	//add one Option to the end
+	protected void addOption(Option opt_i){
+		int i = opt.length;
+		opt[i] = opt_i;
+	}
+	//delete an Option with index
+	protected void deleteOption(String name) {
+		if(findOption(name) == -1){
+			System.out.println("Not Found");
+		}else{
+			int i =  findOption(name);
+			Option temp_opt[] = new Option[opt.length - 1];
+			System.arraycopy(opt, 0, temp_opt, 0, i);
+			System.arraycopy(opt, i+1, temp_opt, i, opt.length-i-1);
+			opt = temp_opt;
+		}
+		
+	}
+	//Update (find and set)
+	protected void updateOption( String name, String new)
+	
+//------Class Option------	
+	public class Option {
+		private String name;
+		private float price;
+//------constructors------
+		//default constructor
+		public Option() {
+			name = null;
+			price = 0;
+		}
+		//constructor with name
+		public Option(String name) {
+			this.name = name;
+			price = 0;
+		}
+		//constructor with name and price
+		public Option(String name, float price) {
+			this.name = name;
+			this.price = price;
+		}
+//------Setters------
+		protected void setName(String name ){
+			this.name = name;			
+		}
+		protected void setPrice(float price){
+			this.price = price;
+		}
+//------Getters------
+		protected String getName() {
+			return name;
+		}
+		protected float getPrice() {
+			return price;
+		}
+	}
+
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:291)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1207)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:807)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:544)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:537)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:480)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:170)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:155)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2014-06-02 21:32:00.596
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:291)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1207)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:807)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:544)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:537)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:480)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:170)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:155)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2014-06-02 21:32:00.597
+!MESSAGE Error in JDT Core during AST creation
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:291)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1207)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:807)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:544)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:537)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:480)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:170)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:155)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.jdt.core 4 4 2014-06-02 21:32:04.109
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package Car_Config;
+
+public class OptionSet {
+	private Option opt[];
+	private String name;
+
+//------constructors------
+	//default constructor
+	public OptionSet() {
+		opt = null;
+		name = null;
+	}
+	//constructor with name
+	public OptionSet(String n) {
+		opt = null;
+		name =n;
+	}
+    //constructor with OptionSet name and size
+	public OptionSet(String n, int size){
+		opt = new Option[size];
+		name =n;
+		for(int i = 0; i < opt.length; i++) {
+			opt[i] = new Option();
+		}
+	}
+//------Getters-------
+	//getName
+	protected String getName() {
+		return name;
+	}
+	//getOption with index
+	protected Option getOptionI(int i){
+		return opt[i];
+	}
+	//find Option with name
+	protected int findOption(String n){
+		for(int i=0; i< opt.length; i++){
+			if(opt[i].getName() == n){
+				return i;
+			}
+		}
+		return -1;
+	}
+//------Setters------
+	//setName
+	protected void setName(String n){
+		name = n;
+	}
+	//setOption with index
+	protected void setOptionI(int i, String name, float price){
+		opt[i] = new Option(name, price);
+	}
+	//add one Option to the end
+	protected void addOption(Option opt_i){
+		int i = opt.length;
+		opt[i] = opt_i;
+	}
+	//delete an Option with index
+	protected void deleteOption(String name) {
+		if(findOption(name) == -1){
+			System.out.println("Not Found");
+		}else{
+			int i =  findOption(name);
+			Option temp_opt[] = new Option[opt.length - 1];
+			System.arraycopy(opt, 0, temp_opt, 0, i);
+			System.arraycopy(opt, i+1, temp_opt, i, opt.length-i-1);
+			opt = temp_opt;
+		}
+		
+	}
+	//Update (find and set)
+	protected void updateOption( String name, String newname, )
+	
+//------Class Option------	
+	public class Option {
+		private String name;
+		private float price;
+//------constructors------
+		//default constructor
+		public Option() {
+			name = null;
+			price = 0;
+		}
+		//constructor with name
+		public Option(String name) {
+			this.name = name;
+			price = 0;
+		}
+		//constructor with name and price
+		public Option(String name, float price) {
+			this.name = name;
+			this.price = price;
+		}
+//------Setters------
+		protected void setName(String name ){
+			this.name = name;			
+		}
+		protected void setPrice(float price){
+			this.price = price;
+		}
+//------Getters------
+		protected String getName() {
+			return name;
+		}
+		protected float getPrice() {
+			return price;
+		}
+	}
+
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:246)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:203)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:258)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:521)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1082)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:170)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:89)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:788)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1247)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:126)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:108)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:89)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:151)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2014-06-02 21:32:04.110
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:246)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:203)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:258)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:521)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1082)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:170)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:89)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:788)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1247)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:126)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:108)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:89)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:151)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2014-06-02 21:32:04.112
+!MESSAGE Error in JDT Core during reconcile
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:246)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:203)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:258)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:521)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1082)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:170)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:89)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:788)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1247)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:126)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:108)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:89)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:151)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+
+!ENTRY org.eclipse.jdt.core 4 4 2014-06-02 21:32:04.153
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package Car_Config;
+
+public class OptionSet {
+	private Option opt[];
+	private String name;
+
+//------constructors------
+	//default constructor
+	public OptionSet() {
+		opt = null;
+		name = null;
+	}
+	//constructor with name
+	public OptionSet(String n) {
+		opt = null;
+		name =n;
+	}
+    //constructor with OptionSet name and size
+	public OptionSet(String n, int size){
+		opt = new Option[size];
+		name =n;
+		for(int i = 0; i < opt.length; i++) {
+			opt[i] = new Option();
+		}
+	}
+//------Getters-------
+	//getName
+	protected String getName() {
+		return name;
+	}
+	//getOption with index
+	protected Option getOptionI(int i){
+		return opt[i];
+	}
+	//find Option with name
+	protected int findOption(String n){
+		for(int i=0; i< opt.length; i++){
+			if(opt[i].getName() == n){
+				return i;
+			}
+		}
+		return -1;
+	}
+//------Setters------
+	//setName
+	protected void setName(String n){
+		name = n;
+	}
+	//setOption with index
+	protected void setOptionI(int i, String name, float price){
+		opt[i] = new Option(name, price);
+	}
+	//add one Option to the end
+	protected void addOption(Option opt_i){
+		int i = opt.length;
+		opt[i] = opt_i;
+	}
+	//delete an Option with index
+	protected void deleteOption(String name) {
+		if(findOption(name) == -1){
+			System.out.println("Not Found");
+		}else{
+			int i =  findOption(name);
+			Option temp_opt[] = new Option[opt.length - 1];
+			System.arraycopy(opt, 0, temp_opt, 0, i);
+			System.arraycopy(opt, i+1, temp_opt, i, opt.length-i-1);
+			opt = temp_opt;
+		}
+		
+	}
+	//Update (find and set)
+	protected void updateOption( String name, String newname, )
+	
+//------Class Option------	
+	public class Option {
+		private String name;
+		private float price;
+//------constructors------
+		//default constructor
+		public Option() {
+			name = null;
+			price = 0;
+		}
+		//constructor with name
+		public Option(String name) {
+			this.name = name;
+			price = 0;
+		}
+		//constructor with name and price
+		public Option(String name, float price) {
+			this.name = name;
+			this.price = price;
+		}
+//------Setters------
+		protected void setName(String name ){
+			this.name = name;			
+		}
+		protected void setPrice(float price){
+			this.price = price;
+		}
+//------Getters------
+		protected String getName() {
+			return name;
+		}
+		protected float getPrice() {
+			return price;
+		}
+	}
+
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:291)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1207)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:807)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:544)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:537)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:480)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:170)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:155)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2014-06-02 21:32:04.153
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:291)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1207)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:807)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:544)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:537)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:480)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:170)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:155)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2014-06-02 21:32:04.153
+!MESSAGE Error in JDT Core during AST creation
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:291)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1207)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:807)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:544)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:537)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:480)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:170)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:155)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.jdt.core 4 4 2014-06-02 21:32:08.128
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package Car_Config;
+
+public class OptionSet {
+	private Option opt[];
+	private String name;
+
+//------constructors------
+	//default constructor
+	public OptionSet() {
+		opt = null;
+		name = null;
+	}
+	//constructor with name
+	public OptionSet(String n) {
+		opt = null;
+		name =n;
+	}
+    //constructor with OptionSet name and size
+	public OptionSet(String n, int size){
+		opt = new Option[size];
+		name =n;
+		for(int i = 0; i < opt.length; i++) {
+			opt[i] = new Option();
+		}
+	}
+//------Getters-------
+	//getName
+	protected String getName() {
+		return name;
+	}
+	//getOption with index
+	protected Option getOptionI(int i){
+		return opt[i];
+	}
+	//find Option with name
+	protected int findOption(String n){
+		for(int i=0; i< opt.length; i++){
+			if(opt[i].getName() == n){
+				return i;
+			}
+		}
+		return -1;
+	}
+//------Setters------
+	//setName
+	protected void setName(String n){
+		name = n;
+	}
+	//setOption with index
+	protected void setOptionI(int i, String name, float price){
+		opt[i] = new Option(name, price);
+	}
+	//add one Option to the end
+	protected void addOption(Option opt_i){
+		int i = opt.length;
+		opt[i] = opt_i;
+	}
+	//delete an Option with index
+	protected void deleteOption(String name) {
+		if(findOption(name) == -1){
+			System.out.println("Not Found");
+		}else{
+			int i =  findOption(name);
+			Option temp_opt[] = new Option[opt.length - 1];
+			System.arraycopy(opt, 0, temp_opt, 0, i);
+			System.arraycopy(opt, i+1, temp_opt, i, opt.length-i-1);
+			opt = temp_opt;
+		}
+		
+	}
+	//Update (find and set)
+	protected void updateOption( String name, String newname, float )
+	
+//------Class Option------	
+	public class Option {
+		private String name;
+		private float price;
+//------constructors------
+		//default constructor
+		public Option() {
+			name = null;
+			price = 0;
+		}
+		//constructor with name
+		public Option(String name) {
+			this.name = name;
+			price = 0;
+		}
+		//constructor with name and price
+		public Option(String name, float price) {
+			this.name = name;
+			this.price = price;
+		}
+//------Setters------
+		protected void setName(String name ){
+			this.name = name;			
+		}
+		protected void setPrice(float price){
+			this.price = price;
+		}
+//------Getters------
+		protected String getName() {
+			return name;
+		}
+		protected float getPrice() {
+			return price;
+		}
+	}
+
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:246)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:203)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:258)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:521)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1082)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:170)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:89)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:788)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1247)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:126)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:108)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:89)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:151)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2014-06-02 21:32:08.129
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:246)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:203)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:258)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:521)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1082)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:170)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:89)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:788)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1247)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:126)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:108)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:89)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:151)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2014-06-02 21:32:08.131
+!MESSAGE Error in JDT Core during reconcile
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:246)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:203)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:258)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:521)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1082)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:170)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:89)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:788)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1247)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:126)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:108)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:89)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:151)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+
+!ENTRY org.eclipse.jdt.core 4 4 2014-06-02 21:32:08.138
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package Car_Config;
+
+public class OptionSet {
+	private Option opt[];
+	private String name;
+
+//------constructors------
+	//default constructor
+	public OptionSet() {
+		opt = null;
+		name = null;
+	}
+	//constructor with name
+	public OptionSet(String n) {
+		opt = null;
+		name =n;
+	}
+    //constructor with OptionSet name and size
+	public OptionSet(String n, int size){
+		opt = new Option[size];
+		name =n;
+		for(int i = 0; i < opt.length; i++) {
+			opt[i] = new Option();
+		}
+	}
+//------Getters-------
+	//getName
+	protected String getName() {
+		return name;
+	}
+	//getOption with index
+	protected Option getOptionI(int i){
+		return opt[i];
+	}
+	//find Option with name
+	protected int findOption(String n){
+		for(int i=0; i< opt.length; i++){
+			if(opt[i].getName() == n){
+				return i;
+			}
+		}
+		return -1;
+	}
+//------Setters------
+	//setName
+	protected void setName(String n){
+		name = n;
+	}
+	//setOption with index
+	protected void setOptionI(int i, String name, float price){
+		opt[i] = new Option(name, price);
+	}
+	//add one Option to the end
+	protected void addOption(Option opt_i){
+		int i = opt.length;
+		opt[i] = opt_i;
+	}
+	//delete an Option with index
+	protected void deleteOption(String name) {
+		if(findOption(name) == -1){
+			System.out.println("Not Found");
+		}else{
+			int i =  findOption(name);
+			Option temp_opt[] = new Option[opt.length - 1];
+			System.arraycopy(opt, 0, temp_opt, 0, i);
+			System.arraycopy(opt, i+1, temp_opt, i, opt.length-i-1);
+			opt = temp_opt;
+		}
+		
+	}
+	//Update (find and set)
+	protected void updateOption( String name, String newname, float )
+	
+//------Class Option------	
+	public class Option {
+		private String name;
+		private float price;
+//------constructors------
+		//default constructor
+		public Option() {
+			name = null;
+			price = 0;
+		}
+		//constructor with name
+		public Option(String name) {
+			this.name = name;
+			price = 0;
+		}
+		//constructor with name and price
+		public Option(String name, float price) {
+			this.name = name;
+			this.price = price;
+		}
+//------Setters------
+		protected void setName(String name ){
+			this.name = name;			
+		}
+		protected void setPrice(float price){
+			this.price = price;
+		}
+//------Getters------
+		protected String getName() {
+			return name;
+		}
+		protected float getPrice() {
+			return price;
+		}
+	}
+
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:291)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1207)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:807)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:544)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:537)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:480)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:470)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:170)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:155)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2014-06-02 21:32:08.138
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:291)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1207)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:807)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:544)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:537)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:480)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:470)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:170)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:155)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2014-06-02 21:32:08.139
+!MESSAGE Error in JDT Core during AST creation
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:291)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1207)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:807)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:544)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:537)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:480)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:470)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:170)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:155)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.jdt.core 4 4 2014-06-02 21:32:10.644
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package Car_Config;
+
+public class OptionSet {
+	private Option opt[];
+	private String name;
+
+//------constructors------
+	//default constructor
+	public OptionSet() {
+		opt = null;
+		name = null;
+	}
+	//constructor with name
+	public OptionSet(String n) {
+		opt = null;
+		name =n;
+	}
+    //constructor with OptionSet name and size
+	public OptionSet(String n, int size){
+		opt = new Option[size];
+		name =n;
+		for(int i = 0; i < opt.length; i++) {
+			opt[i] = new Option();
+		}
+	}
+//------Getters-------
+	//getName
+	protected String getName() {
+		return name;
+	}
+	//getOption with index
+	protected Option getOptionI(int i){
+		return opt[i];
+	}
+	//find Option with name
+	protected int findOption(String n){
+		for(int i=0; i< opt.length; i++){
+			if(opt[i].getName() == n){
+				return i;
+			}
+		}
+		return -1;
+	}
+//------Setters------
+	//setName
+	protected void setName(String n){
+		name = n;
+	}
+	//setOption with index
+	protected void setOptionI(int i, String name, float price){
+		opt[i] = new Option(name, price);
+	}
+	//add one Option to the end
+	protected void addOption(Option opt_i){
+		int i = opt.length;
+		opt[i] = opt_i;
+	}
+	//delete an Option with index
+	protected void deleteOption(String name) {
+		if(findOption(name) == -1){
+			System.out.println("Not Found");
+		}else{
+			int i =  findOption(name);
+			Option temp_opt[] = new Option[opt.length - 1];
+			System.arraycopy(opt, 0, temp_opt, 0, i);
+			System.arraycopy(opt, i+1, temp_opt, i, opt.length-i-1);
+			opt = temp_opt;
+		}
+		
+	}
+	//Update (find and set)
+	protected void updateOption( String name, String newname, float )
+	
+//------Class Option------	
+	public class Option {
+		private String name;
+		private float price;
+//------constructors------
+		//default constructor
+		public Option() {
+			name = null;
+			price = 0;
+		}
+		//constructor with name
+		public Option(String name) {
+			this.name = name;
+			price = 0;
+		}
+		//constructor with name and price
+		public Option(String name, float price) {
+			this.name = name;
+			this.price = price;
+		}
+//------Setters------
+		protected void setName(String name ){
+			this.name = name;			
+		}
+		protected void setPrice(float price){
+			this.price = price;
+		}
+//------Getters------
+		protected String getName() {
+			return name;
+		}
+		protected float getPrice() {
+			return price;
+		}
+	}
+
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:246)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:203)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:258)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:521)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1082)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:170)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:89)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:788)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1247)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:126)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:108)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:89)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:151)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2014-06-02 21:32:10.645
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:246)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:203)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:258)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:521)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1082)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:170)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:89)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:788)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1247)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:126)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:108)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:89)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:151)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2014-06-02 21:32:10.647
+!MESSAGE Error in JDT Core during reconcile
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2648)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:437)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2449)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:537)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:186)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2679)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1222)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:246)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:203)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:258)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:521)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1082)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:170)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:89)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:788)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1247)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:126)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:108)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:89)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:151)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)

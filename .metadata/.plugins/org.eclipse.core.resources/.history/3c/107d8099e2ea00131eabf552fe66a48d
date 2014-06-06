@@ -1,0 +1,93 @@
+package Car_Config;
+
+public class Automotive {
+	private String name;
+	private OptionSet opset[] ;
+	private int baseprice;
+	//--------Four overloaded constructors---------
+	public Automotive() {
+		opset = new OptionSet[5];
+		for( int i=0; i< opset.length; i++){
+			opset[i] = new OptionSet();
+		}
+		name ="Focus Wagon ZTW";
+		baseprice = 18445;
+	}
+	
+	public Automotive(String n){
+		opset = new OptionSet[5];
+		for( int i=0; i< opset.length; i++){
+			opset[i] = new OptionSet();
+		}
+		name = n;
+		baseprice = 18445;
+	}
+	
+	public Automotive(int size){
+		opset = new OptionSet[size];
+		for( int i=0; i< opset.length; i++){
+			opset[i] = new OptionSet();
+		}
+		name = "Focus Wagon ZTW";
+		
+	}
+	
+	public Automotive(int size, String name, int baseprice){
+		opset = new OptionSet[size];
+		this.name = name;
+		for( int i =0; i < opset.length; i++) {
+			optset[i] = new OptionSet();
+		}
+		this.baseprice = baseprice;
+	}
+	//---------------Getters---------------------
+	public String getName(){
+		return name;
+	}
+	public OptionSet[] getOpset() {
+		return opset;
+	}
+	public OptionSet getOptionset( int i){
+		return opset[i];
+	}
+	public int getBaseprice() {
+		return baseprice;
+	}
+	//-------------Find-OptionSet with name-----------------
+	public OptionSet findOpset(String n) {
+		for(int i=0; i< opset.length; i++){
+			//FIXME			
+			if(opset[i].getName() == n){
+				return opset[i];
+			}
+		}
+		return null;
+	}
+	//------------Find Option with name---------------------
+	public Option findOption(String n) {
+		for(int i=0; i< opset.length; i++){
+			for(int j=0; j< opset[i].opt.length; j++){
+				if(opset[i].opt[j].getName() == n){
+					return opset[i].opt[j];
+				}
+			}
+		}
+		return null;
+	}
+	//-----------Find Option with name in context of OptionSet()-----------
+	public Option findOptionwithSet(String nameOptionSet, String nameOption) {
+		OptionSet optSet = findOpset( nameOptionSet);
+		for( int i=0; i < optSet.opt.length; i++){
+			if(optSet.opt[i].getName() == nameOption){
+				return optSet.opt[i];
+			}
+		}
+		return null;
+
+	}
+	//TODO
+	//Setter
+	//Update
+	//Delete
+	
+}

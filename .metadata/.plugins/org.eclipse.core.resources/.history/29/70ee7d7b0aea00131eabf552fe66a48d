@@ -1,0 +1,16 @@
+package Car_Config;
+
+public class OptionSet {
+	Option opt[];
+	String name;
+	OptionSet(String n, int size){
+		opt = new Option[size];
+		name =n;
+	}
+	
+	public class Option {
+		String name;
+		float price;
+	}
+
+}

@@ -1,0 +1,14 @@
+package Parking_Ticket;
+
+public class Test {
+	int a, b;
+	int fine;
+	
+	public static void main(){
+		int a = 75;
+		int b = 60;
+		int fine = (int) Math.ceil(a/b);
+		System.out.println(fine);
+	}
+
+}

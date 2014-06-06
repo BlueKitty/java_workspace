@@ -1,0 +1,15 @@
+package test;
+import Car_Config.Automotive;
+import util.*;
+public class Driver {
+	public static void main(String[] args){
+		ReadSource readfile = new ReadSource();
+		
+		Automotive FordZIW = readfile.buildAutoObject("/Users/xiaolanzhou/Developer/java_workspace/CarConfig/test 2.txt");
+		System.out.println(FordZIW.getName());
+		System.out.println(FordZIW.getBaseprice());
+		//print attributes before serialization
+		FordZIW.print();
+	}
+
+}

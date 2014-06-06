@@ -1,0 +1,49 @@
+package Car_Config;
+
+public class OptionSet {
+	Option opt[];
+	String name;
+	OptionSet(String n, int size){
+		opt = new Option[size];
+		name =n;
+		for(int i = 0; i < opt.length; i++) {
+			opt[i] = new Option();
+		}
+	}
+//------Class Option------	
+	public class Option {
+		private String name;
+		private float price;
+//------constructors------
+		//default constructor
+		public Option() {
+			name = null;
+			price = 0;
+		}
+		//constructor with name
+		public Option(String name) {
+			this.name = name;
+			price = 0;
+		}
+		//constructor with name and price
+		public Option(String name, float price) {
+			this.name = name;
+			this.price = price;
+		}
+//------Setters------
+		protected void setName(String name ){
+			this.name = name;			
+		}
+		protected void setPrice(float price){
+			this.price = price;
+		}
+//------Getters------
+		protected String getName() {
+			return name;
+		}
+		protected float getPrice() {
+			return price;
+		}
+	}
+
+}

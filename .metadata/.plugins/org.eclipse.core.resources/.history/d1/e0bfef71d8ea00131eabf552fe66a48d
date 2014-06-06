@@ -1,0 +1,118 @@
+package Car_Config;
+
+public class OptionSet {
+	private Option opt[];
+	private String name;
+
+//------constructors------
+	//default constructor
+	public OptionSet() {
+		opt = null;
+		name = null;
+	}
+	//constructor with name
+	public OptionSet(String n) {
+		opt = null;
+		name =n;
+	}
+    //constructor with OptionSet name and size
+	public OptionSet(String n, int size){
+		opt = new Option[size];
+		name =n;
+		for(int i = 0; i < opt.length; i++) {
+			opt[i] = new Option();
+		}
+	}
+//------Getters-------
+	//getName
+	protected String getName() {
+		return name;
+	}
+	//getOption with index
+	protected Option getOptionI(int i){
+		return opt[i];
+	}
+	//find Option with name
+	protected int findOption(String n){
+		for(int i=0; i< opt.length; i++){
+			if(opt[i].getName() == n){
+				return i;
+			}
+		}
+		return -1;
+	}
+//------Setters------
+	//setName
+	protected void setName(String n){
+		name = n;
+	}
+	//setOption with index
+	protected void setOptionI(int i, String name, float price){
+		opt[i] = new Option(name, price);
+	}
+	//add one Option to the end
+	protected void addOption(Option opt_i){
+		int i = opt.length;
+		opt[i] = opt_i;
+	}
+	//delete an Option with index
+	protected void deleteOption(String name) {
+		if(findOption(name) == -1){
+			System.out.println("Not Found");
+		}else{
+			int i =  findOption(name);
+			Option temp_opt[] = new Option[opt.length - 1];
+			System.arraycopy(opt, 0, temp_opt, 0, i);
+			System.arraycopy(opt, i+1, temp_opt, i, opt.length-i-1);
+			opt = temp_opt;
+		}
+		
+	}
+	//Update (find and set)
+	protected void updateOption( String name, String newname, float newprice){
+		if(findOption(name) == -1){
+			System.out.println("Not Found");
+		}else{
+			int i = findOption(name);
+			opt[i].setName(newname);
+			opt[i].setPrice(newprice);
+		}
+	}
+	
+//------Class Option------	
+	public class Option {
+		private String name;
+		private float price;
+//------constructors------
+		//default constructor
+		public Option() {
+			name = null;
+			price = 0;
+		}
+		//constructor with name
+		public Option(String name) {
+			this.name = name;
+			price = 0;
+		}
+		//constructor with name and price
+		public Option(String name, float price) {
+			this.name = name;
+			this.price = price;
+		}
+//------Setters------
+		protected void setName(String name ){
+			this.name = name;			
+		}
+		protected void setPrice(float price){
+			this.price = price;
+		}
+//------Getters------
+		protected String getName() {
+			return name;
+		}
+		protected float getPrice() {
+			return price;
+		}
+	}
+
+}

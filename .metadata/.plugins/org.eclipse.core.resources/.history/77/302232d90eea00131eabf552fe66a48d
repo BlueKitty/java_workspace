@@ -1,0 +1,40 @@
+package Car_Config;
+
+public class Automotive {
+	private String name;
+	private OptionSet opset[] ;
+	//--------Four overloaded constructors---------
+	Automotive() {
+		opset = new OptionSet[5];
+		for( int i=0; i< opset.length; i++){
+			opset[i] = new OptionSet();
+		}
+		name ="Focus Wagon ZTW";
+	}
+	
+	Automotive(String n){
+		opset = new OptionSet[5];
+		for( int i=0; i< opset.length; i++){
+			opset[i] = new OptionSet();
+		}
+		name = n;
+	}
+	
+	Automotive(int size){
+		opset = new OptionSet[size];
+		for( int i=0; i< opset.length; i++){
+			opset[i] = new OptionSet();
+		}
+		name = "Focus Wagon ZTW";
+	}
+	
+	Automotive(int size, String n){
+		opset = new OptionSet[size];
+		name = n;
+		for( int i =0; i < opset.length; i++) {
+			optset[i] = new OptionSet();
+		}
+	}
+	
+
+}

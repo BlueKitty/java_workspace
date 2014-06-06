@@ -1,0 +1,17 @@
+package Car_Config;
+
+public class Automotive {
+	String name;
+	OptionSet opset[] ;
+	
+	Automotive(int size, String n)
+	{
+		opset = new OptionSet[size];
+		name = n;
+		
+		for( int i =0; i < opset.length; i++) {
+			optset[i] = new OptionSet();
+		}
+	}
+
+}
