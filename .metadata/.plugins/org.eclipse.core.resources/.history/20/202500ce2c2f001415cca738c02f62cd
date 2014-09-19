@@ -1,0 +1,131 @@
+package Car;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import Adapter.BuildAuto;
+import Model.Automobile;
+
+public class SelectCar extends HttpServlet {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws IOException, ServletException 
+	{
+		//for accept
+		Socket clientSocketGet = null;
+		InetAddress inet = InetAddress.getLocalHost();
+		try {
+			clientSocketGet = new Socket(inet.getHostAddress().toString(), 5555);
+		} catch(UnknownHostException e) {
+			System.err.println("Unknown Host");
+			System.exit(1);
+		} catch(IOException e) {
+			System.err.println("Couldn't get I/O for the connection to: taranis.");
+			System.exit(1);
+		}
+		BuildAuto models = new BuildAuto();
+		
+		ObjectInputStream in = new ObjectInputStream(clientSocketGet.getInputStream());
+		Automobile tempIn = null;
+		try {
+			tempIn = (Automobile) in.readObject();
+			models.addAuto(tempIn);
+		} catch(ClassNotFoundException e1) {
+			e1.printStackTrace();
+		} 
+		
+		Iterator<String> nameIter = models.autoList();
+		ArrayList<String> names = new ArrayList<String>();
+		while(nameIter.hasNext()) {
+			names.add(nameIter.next());
+		}
+		Automobile chosenCar = models.getAuto(names.get(0));
+		
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.println("<html>");
+		out.println("<head>");
+		String title = "Basic Car Choice";
+		out.println("<title>" + title + "</title>");
+		out.println("</head>");
+		out.println("<body bgcolor=\"white\">");
+		
+		out.println("<body>");
+		out.println("<a href=\"/examples/servlets/index.html\">");
+		out.println("<img src=\"examples/images/return.gif\" height=24 "+ "width=24 align= right border=0 alt=\"return\"></a>");
+		out.println("<h1>" + title + "</h1>");
+		out.println("<br");
+		
+		out.println("<form>");
+		out.println("<table style=\"text-align: left; width: 50%;\" border = \"1\" cellpadding=\"2\" cellspacing=\"2\">");
+		out.println("<tbody>");
+		out.println("<tr>");
+		out.println("<td style=\"vertical-align: top;\"><b>Make/Model</b>");
+		out.println("</td>");
+		out.println("<td style=\"vertical-align: top;\">" + chosenCar.getMake() + "/" + chosenCar.getModel());
+		out.println("</td>");
+		out.println("</tr>");
+		
+		Iterator<String> opIter = chosenCar.optionSetNamesIterator();
+		while(opIter.hasNext()) {
+			String curOpSet = opIter.next();
+			ArrayList<String> optionNames = new ArrayList<String>();
+			for(int i = 0; i < chosenCar.getOptionsetLength(curOpSet); i++) {
+				optionNames.add(chosenCar.getOptionSetOptionName(curOpSet, i));
+			}
+			out.println("<tr>");
+			out.println("<td style=\"vertical-align: top;\"><b>" + curOpSet + ":</b>");
+			out.println("</td>");
+			out.println("<td style=\"vertical-align: top;\">");
+			out.println("<select name=\"" + curOpSet + "\">");
+			for(int i = 0; i < optionNames.size(); i++) {
+				out.println("<option value=\"" + i + "\">" + optionNames.get(i) + "</option>");
+			}
+			out.println("</select>");
+			out.println("</td>");
+			out.println("</tr>");
+		}
+		
+		out.println("<td colspan=\"2\" align=\"right\">");
+		out.println("<input type=\"submit\" name=\"Done\" value=\"Done\">");
+		out.println("</td>");
+		out.println("</form>");
+		out.println("</tbody>");
+		out.println("</table>");
+		
+		String Done = request.getParameter("Done");
+		if(Done != null) {
+			try {
+				Iterator<String> opSetIter = chosenCar.optionSetNamesIterator();
+				while(opSetIter.hasNext()) {
+					String theSet = opSetIter.next();
+					int index = Integer.parseInt(request.getParameter(theSet));
+					chosenCar.setOptionChoice(theSet, chosenCar.getOptionSetOptionName(theSet, index));
+				}
+				//set the attribute and forward to jsp
+				request.setAttribute("carModel", chosenCar);
+				getServletConfig().getServletContext().getRequestDispatcher("/jsp/reportcar/reportCar.jsp").forward(request, response);
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+		
+		out.println("</body>");
+		out.println("</html>");		
+	}
+	public void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws IOException, ServletException
+	{
+		doGet(request, response);
+	}
+}
